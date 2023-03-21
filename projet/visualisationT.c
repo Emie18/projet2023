@@ -1,7 +1,5 @@
 #include "visualisationT.h"
-#include "define.h"
-#include <unistd.h>
- #define MAX_LINE_LENGTH 10
+
 void visualisationT(temp_t myTemp)
 {
   //on verrifie que le .verrouData n'existe pas

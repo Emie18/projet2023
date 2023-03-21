@@ -1,5 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "regulation.h"
 
 float regulation( int regul , float consigne ,	float temperature , int premiere , float* erreur_pre , float* integrale_pre ){

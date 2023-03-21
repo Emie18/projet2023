@@ -7,8 +7,7 @@
 #include "ftd2xx.h"
 
 temp_t releve();
-void lecture_temp( char tab[256], temp_t temperature)
-
+void lecture_temp( char tab[256], temp_t temperature);
 
 
 #endif

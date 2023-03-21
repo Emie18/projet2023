@@ -1,6 +1,3 @@
-#include <unistd.h>
-#include <stdio.h>
-#include <math.h>
 #include "visualisationC.h"
 
 #define MAX_LINE_LENGTH 100
