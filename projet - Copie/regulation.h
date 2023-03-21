@@ -6,6 +6,5 @@
 #include "define.h" 
 
 float regulationTest(int regul,float consigne,float* tabT, int nT);
-float regulation(int regul,float consigne, float temperature, int premiere, float* erreur_pre, float* integrale_pre);
-
+float regulation(float consigne,temp_t temp, int regul,	float* temperature);
 #endif
