@@ -3,6 +3,7 @@
 #include "simulateur.h"
  #include "regulation.h"
 #include "consigne.h"
+#include "autotests.h"
 int main(){
 
 	//testRegulationTOR();
@@ -24,31 +25,31 @@ int main(){
 // //temperature=simCalc(puissance,monSimulateur_ps);
 // }
 ///////////////////////////////////////////////////////////////////////////
-	float deltaT = -0.5;
-	int nT = 3;
-	float tabT[nT];
-	tabT[0] = 19.5;
-	for (i = 1; i < nT; i++)
-	{
-		tabT[i] = tabT[i - 1] + deltaT;
-	}
+// 	float deltaT = -0.5;
+// 	int nT = 3;
+// 	float tabT[nT];
+// 	tabT[0] = 19.5;
+// 	for (i = 1; i < nT; i++)
+// 	{
+// 		tabT[i] = tabT[i - 1] + deltaT;
+// 	}
 	
 
-	for(i=0;i< 300;i++){
-		temperature=simCalc(puissance,monSimulateur_ps); // simulation de l'environnement
-		visualisationT(temperature);
-		csg = consigne(csg);
-		printf("test consigne %f",csg);
-		puissance = reg(csg,temperature);
-		//puissance = regulationTest(2,csg,tabT, nT);
-		printf("test consigne %f",puissance);
-		usleep(100000);
-		///teste consigne consigne(3);
+// 	for(i=0;i< 300;i++){
+// 		temperature=simCalc(puissance,monSimulateur_ps); // simulation de l'environnement
+// 		visualisationT(temperature);
+// 		csg = consigne(csg);
+// 		printf("test consigne %f",csg);
+// 		puissance = reg(csg,temperature);
+// 		//puissance = regulationTest(2,csg,tabT, nT);
+// 		printf("test consigne %f",puissance);
+// 		usleep(100000);
+// 		///teste consigne consigne(3);
 
-	}
-	simDestruct(monSimulateur_ps); // destruction de simulateur
-	return EXIT_SUCCESS;
-}
+// 	}
+// 	simDestruct(monSimulateur_ps); // destruction de simulateur
+// 	return EXIT_SUCCESS;
+// }
 
 //int main(){
 /////////////////////////////////////////////
@@ -69,17 +70,18 @@ int main(){
 //////////////////////////////////////////////////////////
 //i++;
 //}
-// float score1=0,score2=0,score3=0,score4=0,score5=0;
-// score1 = testVisualisationT();
-// score2 = testConsigne();
-// score3 = testVisualisationC();
+float score1=0,score2=0,score3=0,score4=0,score5=0;
+score1 = testVisualisationT();
+score2 = testConsigne();
+score3 = testVisualisationC();
+//visualisationC(1.00);
 // score4 = testRegulationTOR();
 // score5 = testRegulationPID();
-// printf("----- Auto tests results: -----\n");
-// printf("testVisualisationT\t:score=%g%%\n",score1*100);
-// printf("testConsigne \t\t: score=%g %%\n",score2*100);
-// printf("testVisualisationC\t:score=%g %%\n",score3*100);
+printf("----- Auto tests results: -----\n");
+printf("testVisualisationT\t:score=%g%%\n",score1*100);
+printf("testConsigne \t\t: score=%g %%\n",score2*100);
+printf("testVisualisationC\t:score=%g %%\n",score3*100);
 // printf("testRegulationTOR\t:score=%g %%\n",score4*100);
 // printf("testRegulationPID\t:score=%g %%\n",score5*100);
-// return EXIT_SUCCESS;
-//}
+return EXIT_SUCCESS;
+}

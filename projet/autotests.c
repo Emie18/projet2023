@@ -117,7 +117,7 @@ float testConsigne()
 		printf("test_consigne_lock failed\n");
 #endif
 	}
-
+	//printf("score = %f",score);
 	return score;
 }
 

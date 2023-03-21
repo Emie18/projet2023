@@ -22,7 +22,6 @@ void visualisationT(temp_t myTemp)
       fprintf(data, "%s", line);
       fprintf(data, "%.2f\n ", myTemp.interieure);
       fprintf(data, "%.2f\n", myTemp.exterieure);
-      
     }
     else
     {
