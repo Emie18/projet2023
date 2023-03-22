@@ -3,8 +3,9 @@
 
 #include <windows.h>
 #include "define.h"
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
+
 #include "ftd2xx.h"
 
 temp_t releve();
