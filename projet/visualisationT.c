@@ -15,7 +15,7 @@ void visualisationT(temp_t myTemp)
     {
       //recuperation de la puissance dans line
     if (fgets(line, MAX_LINE_LENGTH, data) != NULL) {
-        printf("La premiere ligne est : %s\n", line);
+        printf("Temoin de chauffe : %s\n", line);
     }
     }
     //fermeture, puis ouverture en mode lecture cette fois du fichier data
@@ -34,7 +34,7 @@ void visualisationT(temp_t myTemp)
     else
     {
       //message d'echec à l'ouverture
-      printf("echec à l'ouverture");
+      printf("echec à l'ouverture du fichier data.txt");
     }
     //fermeture du fichier data.txt
     fclose(data);

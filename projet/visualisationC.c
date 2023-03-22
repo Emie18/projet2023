@@ -33,7 +33,6 @@ void visualisationC(float puissance_f)
          }
          fprintf(data, "\n%.2f \n",temperature_int);
          fprintf(data, "%.2f \n ", temperature_ext);
-         fclose(data);
       }
       else
       {
@@ -44,12 +43,3 @@ void visualisationC(float puissance_f)
       remove(".verrouData");
    }
 }
-         // Tant qu'on n'a pas atteint la fin du fichier et qu'on a traité moins de trois lignes
-         // while (fgets(ligne, MAX_LINE_LENGTH, data) != NULL && num_ligne <= 3)
-         // {
-         //       i++; 
-         //    printf("i: %d ,num: %s\n",i,ligne);// Afficher la ligne
-         //    num_ligne++;
-         //       // Passer à la ligne suivante
-            
-         // }

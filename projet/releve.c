@@ -3,63 +3,64 @@
 temp_t releve(){
 
     temp_t temperature;
+    temperature.exterieure = 0;
+    temperature.interieure = 0;
 
     FT_HANDLE ftHandle;
     FT_STATUS ftStatus;
     DWORD RxBytes = 8;
     DWORD BytesReceived;
-    char RxBuffer[256];
+    char RxBuffer[10];
     ftStatus = FT_Open(0,&ftHandle);
 
     if(ftStatus != FT_OK) {
-        // FT_Open failed
-        return;
+        printf ("FT_Open failed");
+        return temperature;
+
     }
     FT_SetTimeouts(ftHandle,5000,0);
+    FT_SetBaudRate(ftHandle,115200);
     ftStatus = FT_Read(ftHandle,RxBuffer,RxBytes,&BytesReceived);
     if (ftStatus == FT_OK) {
         if (BytesReceived == RxBytes) {
+            temperature = lecture_temp(RxBuffer);
             // FT_Read OK
         }else {
             // FT_Read Timeout
         }
     }else {
-        // FT_Read Failed
+        printf ("FT_Read failed");
+        return temperature;
     }
     FT_Close(ftHandle);
+    return temperature;
 }
 
-void lecture_temp( char tab[256], temp_t temperature){
-// //Déclaration des variables
-// unsigned char octet;
-// unsigned char last4bits;
-// unsigned char first4bits;
+temp_t lecture_temp( char tab[10]){
+    // //Déclaration des variables
+    temp_t temperature;
+    char temp_int = 0;
+    char temp_ext = 0;
 
-// //Lecture de l'octet à partir d'une source de données (ex: port série)
-// //Remplacez cette étape par la lecture de votre octet à partir de votre source de données
-// octet = 0xA8; //Exemple de valeur, à remplacer par la valeur réelle lue depuis la source de données
-
-// //Vérification si les 4 derniers bits sont égaux à 0x8
-// if ((octet & 0x0F) == 0x08) {
-//     //Si les 4 derniers bits sont égaux à 0x8, récupération des 4 premiers bits
-//     first4bits = octet >> 4;
-//     //Affichage de la valeur récupérée si les 4 premiers bits sont égaux à 8
-//     if (first4bits == 0x08) {
-//         printf("Les 4 premiers bits sont égaux à 0x8 !");
-//     } else {
-//         printf("Les 4 premiers bits sont différents de 0x8 (valeur : 0x%X)", first4bits);
-//     }
-// } else {
-//     printf("Les 4 derniers bits ne sont pas égaux à 0x8");
-// }
-
-    for (int i = 0;i<256;i++){
+    for (int i = 0;i<10;i++){
         //temperature interieur
-        if( tab[i]>>4 == 0x8){
-            temperature.interieure = (tab[i] & 0xf);
+        if( (tab[i] & 0xF0)>>4 == 0x08){
+            if( (tab[i+1] & 0xF0)>>4 == 0x09){
+                if( (tab[i+2] & 0xF0)>>4 == 0x10){
+                    char SOT = ((tab[i] & 0x0F) << 8) + ((tab[i+1] & 0x0F)<<4) + (tab[i+2] & 0x0F);
+                    temperature.interieure =  -39,64 + 0,04*SOT;
+                }
+            }
         }
-        if( tab[i]>>4 == 0x8){
-
+        if( (tab[i] & 0xF0)>>4 == 0x00){
+            if( (tab[i+1] & 0xF0)>>4 == 0x01){
+                if( (tab[i+2] & 0xF0)>>4 == 0x02){
+            char SOT = ((tab[i] & 0x0F) << 8) + ((tab[i+1] & 0x0F)<<4) + (tab[i+2] & 0x0F);
+            temperature.exterieure =  -39,64 + 0,04*SOT;
+                }
+            }
         }
     }
+    return temperature;
+
 }

@@ -24,9 +24,6 @@ float consigne(float thermostatPrec_f)
       fgets(line,20,fichier);
       thermostat_f = atof(line);
 
-      //affiche la valeur de la consigne
-      printf("consigne :%.2f \n", thermostat_f);
-
       //fermeture du fichier consigne.txt
       fclose(fichier);
       //fermeture et suppresion du fichier .verrouConsigne

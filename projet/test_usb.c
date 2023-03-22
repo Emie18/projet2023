@@ -1,31 +1,25 @@
-#include "simulateur.h"
+#include "define.h"
+#include "releve.h"
+#include "commande.h"
 #include "regulation.h"
 #include "consigne.h"
 #include "visualisationT.h"
 #include "visualisationC.h"
-#include "define.h"
-#define _BSD_SOURCE
 int main(){
-	//initialisation des premières température
-	temp_t temperature;
-	temperature.exterieure = 14.0;
-	temperature.interieure = 20.0;
-
- 	// creation du simulateur, puissance intialisée à 0%
-	struct simParam_s*  monSimulateur_ps = simConstruct(temperature);
-	int i=0; // increment de boucle
-	float puissance = 70.0; // puissance de chauffage
-	//initialisation de la première consigne à 20° si lecture impossible
+    printf("OK\n");
+    /*
+    temp_t temperature = releve();
+    float puissance = 0.0;
+    //initialisation de la première consigne à 20° si lecture impossible
 	float csg = 20;
 	csg = consigne(csg);
 	//initialisation des outils pour le calcul de PID
 	int premiere = 0;
     float erreur_pre = 0;
     float integrale_pre = 0;
-
-	//boucle infinit
+    	//boucle infinit
 	while(1){
-		temperature=simCalc(puissance,monSimulateur_ps); // simulation de l'environnement
+		temperature=releve(); // simulation de l'environnement
 		//Ecriture des nouvelles température dans le fichier data.txt
 		visualisationT(temperature);
 		//récupération de la consigne qui se trouve dans consigne.txt
@@ -46,10 +40,10 @@ int main(){
 		printf("\nPuissance: %f\n",puissance);
 		//incrementation de la decision pour le calcul de l'intégrale
 		premiere++;
+
+        commande(temperature);
 		//attendre
 		usleep(100000);
-
  	}
- 	simDestruct(monSimulateur_ps); // destruction de simulateur
- 	return EXIT_SUCCESS;
- }
+*/
+}
