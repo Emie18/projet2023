@@ -15,7 +15,7 @@ float regulation( int regul , float consigne ,	float temperature , int premiere 
 			cmd = 0;
 		}
 	return cmd;
-	
+
 	//PID
 	}else if(regul == 2){
 		e = consigne - temperature;
@@ -31,6 +31,7 @@ float regulation( int regul , float consigne ,	float temperature , int premiere 
                 *erreur_pre = e;
                 *integrale_pre = integrale;
 				 cmd = 1.1*e + 0.2*integrale + 0.15*derivee;
+				 //cmd = e+integrale+derivee;
 				 if(cmd>100){
 					cmd = 100;
 				 }
@@ -45,6 +46,7 @@ float regulation( int regul , float consigne ,	float temperature , int premiere 
             *integrale_pre = integrale;
 		}
 		return cmd;
+
     }
 }
 

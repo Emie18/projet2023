@@ -14,7 +14,7 @@ void commande(float puis){
     FT_SetTimeouts(ftHandle,5000,0);
     FT_SetBaudRate(ftHandle,115200);
     TxBuffer[0] = (char)(puis*127)/100;
-    printf("%d",TxBuffer[0]);
+    printf("buffer: %d",TxBuffer[0]);
     ftStatus = FT_Write(ftHandle, TxBuffer, sizeof(TxBuffer), &BytesWritten);
     if (ftStatus == FT_OK) {
     // FT_Write OK

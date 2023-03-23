@@ -2,9 +2,11 @@
 #define COMMANDE_H
 
 #include "define.h"
-#include <stdio.h>
-#include <stdlib.h>
 #include "ftd2xx.h"
+
+/*-------------------------------------------
+la fonction commande ecrit la puissance ?
+--------------------------------------------*/
 
 void commande(float puissance);
 

@@ -1,9 +1,12 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include "define.h" 
+#ifndef CONSIGNE_H
+#define CONSIGNE_H
 
-// Pensez à bien proteger vos .h avec des ifndef
-
+#include "define.h"
+/*-------------------------------------------
+la fonction consigne retourne la consigne
+qui se trouve dans le fichier consigne.txt
+--------------------------------------------*/
 
 float consigne(float thermostatPrec_f);
+
+#endif

@@ -1,12 +1,12 @@
-# projet.exe:  visualisationC.o visualisationT.o consigne.o regulation.o autotests.o test_simulateur.o simulateur.o #releve.o
-# 	gcc -g visualisationC.o visualisationT.o consigne.o regulation.o autotests.o test_simulateur.o simulateur.o -o projet.exe
+projet_sim.exe:  visualisationC.o visualisationT.o consigne.o regulation.o autotests.o test_simulateur.o simulateur.o define.h
+	gcc -g visualisationC.o visualisationT.o consigne.o regulation.o autotests.o test_simulateur.o simulateur.o -o projet_sim.exe
 
 
-# projet.exe:  visualisationC.o visualisationT.o consigne.o regulation.o autotests.o test_unitaire.o simulateur.o
-# 	gcc -g visualisationC.o visualisationT.o consigne.o regulation.o autotests.o test_unitaire.o simulateur.o  -o projet.exe
+projet_test.exe:  visualisationC.o visualisationT.o consigne.o regulation.o autotests.o test_unitaire.o simulateur.o define.h
+	gcc -g visualisationC.o visualisationT.o consigne.o regulation.o autotests.o test_unitaire.o simulateur.o  -o projet_test.exe
 
-projet.exe:  visualisationC.o visualisationT.o consigne.o regulation.o commande.o releve.o test_usb.o
-	gcc visualisationC.o visualisationT.o consigne.o regulation.o commande.o releve.o test_usb.o i386/ftd2xx.lib -o projet.exe
+# projet.exe:  visualisationC.o visualisationT.o consigne.o regulation.o commande.o releve.o test_usb.o
+# 	gcc visualisationC.o visualisationT.o consigne.o regulation.o commande.o releve.o test_usb.o i386/ftd2xx.lib -o projet.exe
 
 visualisationC.o: visualisationC.c visualisationC.h
 	gcc -c visualisationC.c
