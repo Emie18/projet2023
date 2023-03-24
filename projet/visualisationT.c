@@ -2,11 +2,12 @@
 
 void visualisationT(temp_t myTemp)
 {
+     FILE *fichierverrou = NULL;
   //on verrifie que le .verrouData n'existe pas
   if (access(".verrouData", F_OK)!=0)
   {
     //creation de fichier verrou
-    FILE *fichierverou = fopen(".verrouData", "w");
+    fichierverrou = fopen(".verrouData", "w");
 
     //ouverture en mode lecture du fichier data
     FILE *data = fopen("data.txt", "r");
@@ -28,7 +29,7 @@ void visualisationT(temp_t myTemp)
       fprintf(data, "%s", line);
 
       //on écrit dans data les nouvelle valeur de température
-      fprintf(data, "%.2f\n ", myTemp.interieure);
+      fprintf(data, "%.2f\n", myTemp.interieure);
       fprintf(data, "%.2f\n", myTemp.exterieure);
     }
     else
@@ -38,9 +39,9 @@ void visualisationT(temp_t myTemp)
     }
     //fermeture du fichier data.txt
     fclose(data);
-    
+
     //fermeture et suppression du fichier .verrouData
-    fclose(fichierverou);
+    fclose(fichierverrou);
     remove(".verrouData");
   }
 }

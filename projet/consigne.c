@@ -2,10 +2,10 @@
 
 float consigne(float thermostatPrec_f)
 {
-   float thermostat_f = 0;
+   float thermostat_f = thermostatPrec_f;
    FILE *fichierverrou = NULL;
    //si le fichier .verrouConsigne n'existe pas
-   if (access(".verrouConsigne", F_OK))
+   if (access(".verrouConsigne", F_OK)!=0)
    {
       //creation du fichier .verrouConsigne
       fichierverrou = fopen(".verrouConsigne", "w");
@@ -16,8 +16,8 @@ float consigne(float thermostatPrec_f)
 
       //si le fichier n'existe pas on retourn l'ancienne valeurs
       if(fichier == NULL){
-         return thermostatPrec_f;
-      }
+         thermostat_f = thermostatPrec_f;
+      }else{
 
       //on récupère la consigne dans le fichier consigne.txt
       char line[20];
@@ -26,12 +26,12 @@ float consigne(float thermostatPrec_f)
 
       //fermeture du fichier consigne.txt
       fclose(fichier);
+      }
+
       //fermeture et suppresion du fichier .verrouConsigne
       fclose(fichierverrou);
       remove(".verrouConsigne");
-      //renvoi de la nouvelle consigne
-      return thermostat_f;
    }
       //renvoi de la nouvelle consigne
-      return thermostatPrec_f;
+      return thermostat_f;
 }

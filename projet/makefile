@@ -5,7 +5,7 @@ projet_sim.exe:  visualisationC.o visualisationT.o consigne.o regulation.o autot
 projet_test.exe:  visualisationC.o visualisationT.o consigne.o regulation.o autotests.o test_unitaire.o simulateur.o define.h
 	gcc -g visualisationC.o visualisationT.o consigne.o regulation.o autotests.o test_unitaire.o simulateur.o  -o projet_test.exe
 
-# projet.exe:  visualisationC.o visualisationT.o consigne.o regulation.o commande.o releve.o test_usb.o
+# projet.exe:  visualisationC.o visualisationT.o consigne.o regulation.o commande.o releve.o test_usb.o define.h
 # 	gcc visualisationC.o visualisationT.o consigne.o regulation.o commande.o releve.o test_usb.o i386/ftd2xx.lib -o projet.exe
 
 visualisationC.o: visualisationC.c visualisationC.h
@@ -19,13 +19,13 @@ consigne.o : consigne.c consigne.h
 
 regulation.o: regulation.c regulation.h
 	gcc -c regulation.c
-
+#enlever:
 autotests.o : autotests.c autotests.h
 	gcc -c autotests.c
 
 test_simulateur.o: test_simulateur.c
 	gcc -c test_simulateur.c
-
+#enlever
 test_unitaire.o: test_unitaire.c
 	gcc -c test_unitaire.c
 

@@ -6,8 +6,8 @@ void commande(float puis){
     FT_HANDLE ftHandle;
     FT_STATUS ftStatus;
     DWORD BytesWritten;
-    char TxBuffer[1]; // Contains data to write to device  
-    ftStatus = FT_Open(0, &ftHandle);
+    char TxBuffer[1]; // Contient les données à écrire  
+    ftStatus = FT_Open(0, &ftHandle); 
     if(ftStatus != FT_OK) {
         printf ("FT_Open failed");
     }

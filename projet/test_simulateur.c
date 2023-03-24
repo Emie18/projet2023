@@ -16,7 +16,7 @@ int main(){
 	int i=0; // increment de boucle
 	float puissance = 70.0; // puissance de chauffage
 	//initialisation de la première consigne à 20° si lecture impossible
-	float csg = 20;
+	float csg = 10;
 	csg = consigne(csg);
 	//initialisation des outils pour le calcul de PID
 	int premiere = 0;
